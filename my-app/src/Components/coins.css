@@ -1,0 +1,31 @@
+
+.green {
+    color: #11ec11
+}
+.red {
+    color: #ff0000;
+}
+#phone {
+  width: 400px;
+  height: 400px;
+  background-image: url('../Images/phoneCrypto.jpg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 120% 80%;
+}
+
+hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+  margin-bottom: 100px;
+}
+
+.grid-container {
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 720px) {
+  .hide-mobile {
+      display: none;
+  }
+}
