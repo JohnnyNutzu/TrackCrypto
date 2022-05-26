@@ -1,6 +1,7 @@
 .navbar {
     display: flex;
     height: 140px;
+    width: auto;
 	font-weight: 600;
 	position: relative;  
 	line-height: 40px;
@@ -118,3 +119,15 @@
 .Global:hover .each-slide {
     animation: glitchText 0.3s linear;
 }
+
+@media screen and (max-width: 500px) {
+    .navbar {
+        height: auto;
+    }
+    .each-slide div {
+        font-size: 20px;
+    }
+   .each-slide span {
+       font-size: 10px;
+   }
+ }

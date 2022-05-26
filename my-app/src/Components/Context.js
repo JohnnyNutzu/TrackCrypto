@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Trending, Categories } from "../config/api";
 import { Grid } from "@material-ui/core";
-import ReactHtmlParser from "react-html-parser"
-import "../Pages/page.css"
+import ReactHtmlParser from "react-html-parser";
+import "../Pages/page.css";
 import '@coreui/coreui/dist/css/coreui.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaCoins } from 'react-icons/fa'
-import { MdCategory } from 'react-icons/md'
+import { FaCoins } from 'react-icons/fa';
+import { MdCategory } from 'react-icons/md';
+import { CTooltip } from '@coreui/react';
 
 // Display trending coins and a few categories
 export default function Context() {
@@ -37,7 +38,7 @@ export default function Context() {
 
   return (
     <div>
-        <hr className="rounded"></hr>
+      <hr className="rounded"></hr>
       <Grid container className="menu-container" spacing={5}>
       <Grid className="trending" item lg={4} >
         <ul className="tred-info">
@@ -123,7 +124,9 @@ export default function Context() {
           <ul className="cubes">
             <li className="category">
               <div className="holder">
-                <div className="category-content">{ReactHtmlParser(category?.[0].content.split(', '))}</div>
+                <div className="category-content">
+                  {category?.[0].content}
+                </div>
                   <div className="info">
                     <header>
                       <h1>{category?.[0].name}</h1>
@@ -140,18 +143,36 @@ export default function Context() {
                         </span>
                     </header>
                       <h5>Top 3 Coins</h5>
-                        <p>
-                          <img src={category?.[0].top_3_coins[0]} alt={category?.[0].name}></img>
-                          <img src={category?.[0].top_3_coins[1]} alt={category?.[0].name}></img>
-                          <img src={category?.[0].top_3_coins[2]} alt={category?.[0].name}></img>
-                        </p>
-                        <p></p>
+                       
+                          <CTooltip 
+                            content={ReactHtmlParser(category?.[0].top_3_coins[0].slice(52, 60))}
+                            placement="top"
+                          >
+                            <img src={category?.[0].top_3_coins[0]} alt={category?.[0].name}></img>
+                          </CTooltip>
+                          <CTooltip 
+                            content={ReactHtmlParser(category?.[0].top_3_coins[1].slice(52, 58))}
+                            placement="top"
+                          >
+                            <img src={category?.[0].top_3_coins[1]} alt={category?.[1].name}></img>
+                          </CTooltip>
+                          <CTooltip 
+                            content={ReactHtmlParser(category?.[0].top_3_coins[2].slice(53, 61))}
+                            placement="top"
+                          >
+                            <img src={category?.[0].top_3_coins[2]} alt={category?.[0].name}></img>
+                          </CTooltip>
+                         
+              
+        
                   </div>
               </div>
             </li>
             <li className="category">
               <div className="holder">
-                <div className="category-content">{ReactHtmlParser(category?.[1].content.split(', '))}</div>
+                <div className="category-content">
+                  {category?.[1].content.split(", 10")}
+                </div>
                   <div className="info">
                     <header>
                       <h1>{category?.[1].name}</h1>
@@ -168,16 +189,32 @@ export default function Context() {
                       </span>                     
                       </header>
                       <h5>Top 3 Coins</h5>
-                      <p><img src={category?.[1].top_3_coins[0]} alt={category?.[1].name}></img>
-                      <img src={category?.[1].top_3_coins[1]} alt={category?.[1].name}></img>
-                      <img src={category?.[1].top_3_coins[2]} alt={category?.[1].name}></img></p>
-                      <p></p>
+                          <CTooltip 
+                            content={ReactHtmlParser(category?.[1].top_3_coins[0].slice(52, 60))}
+                            placement="top"
+                          >
+                            <img src={category?.[1].top_3_coins[0]} alt={category?.[0].name}></img>
+                          </CTooltip>
+                          <CTooltip 
+                            content={ReactHtmlParser(category?.[1].top_3_coins[1].slice(52, 58))}
+                            placement="top"
+                          >
+                            <img src={category?.[1].top_3_coins[1]} alt={category?.[1].name}></img>
+                          </CTooltip>
+                          <CTooltip 
+                            content={ReactHtmlParser(category?.[1].top_3_coins[2].slice(53, 61))}
+                            placement="top"
+                          >
+                            <img src={category?.[1].top_3_coins[2]} alt={category?.[0].name}></img>
+                          </CTooltip>
                 </div>
               </div>
             </li>
             <li className="category">
               <div className="holder">
-                <div className="category-content">{ReactHtmlParser(category?.[5].content.split(', '))}</div>
+                <div className="category-content">
+                  {ReactHtmlParser(category?.[3].content.split(10))}
+                </div>
                   <div className="info">
                     <header>
                       <h1>{category?.[5].name}</h1>
@@ -194,9 +231,24 @@ export default function Context() {
                       </span>
                       </header>
                       <h5>Top 3 Coins</h5>
-                      <p><img src={category?.[5].top_3_coins[0]} alt={category?.[5].name}></img>
-                      <img src={category?.[5].top_3_coins[1]} alt={category?.[5].name}></img>
-                      <img src={category?.[5].top_3_coins[2]} alt={category?.[5].name}></img></p>
+                      <CTooltip 
+                            content={ReactHtmlParser(category?.[2].top_3_coins[0].slice(52, 60))}
+                            placement="top"
+                          >
+                            <img src={category?.[2].top_3_coins[0]} alt={category?.[0].name}></img>
+                          </CTooltip>
+                          <CTooltip 
+                            content={ReactHtmlParser(category?.[2].top_3_coins[1].slice(52, 58))}
+                            placement="top"
+                          >
+                            <img src={category?.[2].top_3_coins[1]} alt={category?.[1].name}></img>
+                          </CTooltip>
+                          <CTooltip 
+                            content={ReactHtmlParser(category?.[2].top_3_coins[2].slice(53, 61))}
+                            placement="top"
+                          >
+                            <img src={category?.[2].top_3_coins[2]} alt={category?.[0].name}></img>
+                          </CTooltip>
                       <p></p>
                 </div>
               </div>

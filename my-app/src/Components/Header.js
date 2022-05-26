@@ -28,14 +28,14 @@ function Header() {
     }, []);
 
   const properties = {
-    duration: 3000,
+    duration: 4000,
     autoplay: true,
     arrows: false,
   };
 
   return (
     <Grid container className="navbar">
-      <Grid item lg={4}>
+      <Grid item xs={12} lg={4}>
         <div className="title">
             <a href="/" style={{ textDecoration: "none" }}>
                 <div className="letter">C</div>
@@ -44,7 +44,7 @@ function Header() {
             </a>
         </div>
       </Grid>
-      <Grid item lg={4}>
+      <Grid item xs={8} lg={4}>
         <div className="Global">
          <Slide easing="ease" {...properties}>
           <div className="each-slide">
@@ -95,7 +95,7 @@ function Header() {
           </Slide>
         </div>
       </Grid>
-        <Grid item lg={2}>
+        <Grid item xs={4} lg={2}>
         <div id="setCurrency" >
         <Select
             variant="outlined"

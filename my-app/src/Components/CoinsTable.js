@@ -75,19 +75,18 @@ export default function CoinsTable() {
 
   return (
     <Grid className="grid-container" container>
-      <Grid item lg={4}>
+      <Grid item xs={12} lg={4}>
         <Typography variant="h6" style={{ margin: 18, fontFamily: "Georgia", align: 'center' }}>
             Track your Crypto<BsCurrencyBitcoin style={{ color: 'gold' }} />
         </Typography>
         <TextField label="Search" variant="outlined"  style={{  width: 400}} onChange={(e) => setSearch(e.target.value)}/>
         <div id="phone"></div>
       </Grid>
-      <Grid className="table-coins" item lg={8} style={{ textAlign: "center" }}>
+      <Grid className="table-coins" item xs={12} lg={8} style={{ textAlign: "center" }}>
+        <h3 style={{ fontFamily:"Georgia" }}>Top coins by market value</h3>
         <TableContainer component={Paper}>
           {loading ? (<LinearProgress style={{ backgroundColor: "gold" }} />) : (
             <Table aria-label="simple table">
-            
-    
               <TableBody>{handleSearch().slice((page - 1) * 6, (page - 1) * 6 + 6).map((row) => { 
                     return (
                       <TableRow onClick={() => navigate(`/coins/${row.id}`)}  className={classes.row}  key={row.name}>
@@ -100,16 +99,14 @@ export default function CoinsTable() {
                           </div>
                         </TableCell>
                         <TableCell align="right">
-                       
                           {symbol}{" "}
                           {numberWithCommas(row.current_price.toFixed(2))}
-                         
                         </TableCell>
                         <TableCell  align="right" >
                           <CTooltip
-                            content="Price change percentage in 24h"
-                            placement="top"
-                          >
+                                content="Price change percentage in 24h"
+                                placement="top"
+                            >
                               {row.price_change_percentage_24h < 0 ? (
                                 <span className='red'><FiArrowDown />
                                   {row.price_change_percentage_24h.toFixed(2)}%
@@ -137,13 +134,12 @@ export default function CoinsTable() {
                             )}
                           </CTooltip>
                         </TableCell>
-                        <TableCell align="right">
+                        <TableCell className="market-cap" align="right">
                             {symbol}{" "}
                             {numberWithCommas(
                               row.market_cap.toString().slice(0, -6)
                             )}
                             M
-                        
                         </TableCell>
                       </TableRow>
                     );

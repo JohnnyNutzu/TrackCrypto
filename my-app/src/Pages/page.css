@@ -183,20 +183,31 @@
     box-shadow: inset 0px 0px 40px rgba(0,0,0,0);
 }
 .cubes:nth-child(1) .category-content {
-    background-image: url('../Images/Crypto.png');
+    background-image: url('../Images/Coins.png');
 }
 .cubes:nth-child(2) .category-content {
-    background-image: url('../Images/Crypto.png');
+    background-image: url('../Images/BlackKeyboard.jpg');
+ 
 }
 .cubes:nth-child(3) .category-content{
-    background-image: url('../Images/Crypto.png');
+    background-image: url('../Images/Matrix.jpg');
 } 
 .cubes:nth-child(1) .info header {
-    background-image: url('../Images/Coins.png');
+    background-image: url('../Images/Crypto.png');
 }
 .cubes:nth-child(2) .info header {
-    background-image: url('../Images/Coins.png');
+    background-image: url('../Images/Crypto.png');
 }
 .cubes:nth-child(3) .info header {
-    background-image: url('../Images/Coins.png');
+    background-image: url('../Images/Crypto.png');
+}
+
+@media screen and (max-width: 500px) {
+   .category {
+       float: none;
+       margin-left: 50px;
+   }
+   .tred-info li {
+       width: 350px;
+   }
 }

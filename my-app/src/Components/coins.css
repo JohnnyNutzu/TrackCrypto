@@ -28,4 +28,8 @@ hr.rounded {
   .hide-mobile {
       display: none;
   }
+  .table-coins {
+    height: auto;
+    width: 380px;
+  }
 }
