@@ -1,0 +1,61 @@
+/*Footer with exchanges and info */
+.each-slide ol:hover{
+    background-color: rgba(231, 182, 182, 0.011);
+}
+.each-slide ol:hover .exchange-main{
+    color: #160cd9;
+    opacity: 0.8;
+}
+.each-slide ol:hover .exchange-sub{
+    color: #fff;
+    opacity: 0.8;
+}
+.exchange-content {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.footer {
+    height: 400px;
+    bottom: 10px;
+    padding: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+}
+.footer-icons {
+    font-size: 2em;
+    color: blue;
+}
+.icons {
+    padding: 30px;
+}
+.icons h3 {
+    text-emphasis-color: gold;
+}
+.exchange-slide p{
+    align-items: center;
+    text-align: center;
+}
+.zoom-info p {
+    color: #d6d90c;
+}
+
+@media screen and (max-width: 500px) {
+   .footer {
+       height: auto;
+       display: grid;
+       direction: column;
+       justify-content: flex-start;
+       align-items: stretch;
+   }
+   .footer-icons{
+       padding: 20px;
+   }
+   .exchange-slide{
+       padding: 60px;
+   }
+   .zoom-info{
+       margin: 50px;
+       font-size: 20px;
+       font-family: Georgia, 'Times New Roman', Times, serif;
+   }
+  }
+  

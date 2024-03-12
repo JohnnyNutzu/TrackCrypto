@@ -1,0 +1,50 @@
+.tablecoin {
+  display: flex;
+  font-size: larger;
+ 
+}
+.information {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(3, 3fr);
+  grid-gap: 2rem;
+  border: #11ec11;
+  border-radius: 10px;
+}
+.tablecoin .information {
+  align-items: center;
+  justify-content: center;
+}
+.green {
+    color: #11ec11
+}
+.red {
+    color: #ff0000;
+}
+#phone {
+  width: 400px;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 120% 80%;
+}
+
+hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+  margin-bottom: 100px;
+}
+
+.grid-container {
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 720px) {
+  .hide-mobile {
+      display: none;
+  }
+  .table-coins {
+    height: auto;
+    width: 380px;
+  }
+}
