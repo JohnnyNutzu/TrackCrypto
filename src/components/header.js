@@ -1,51 +1,141 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from "axios";
+import { Global } from "../config/api"
 import { CryptoState } from '../cryptocontext';
-import { Select, MenuItem} from '@mui/material';
-import 'react-slideshow-image/dist/styles.css';
+import { Select, MenuItem, Grid } from '@mui/material';
+import './header.css';
+import 'react-slideshow-image/dist/styles.css'
 import { Slide } from 'react-slideshow-image';
+import { FiArrowUpRight, FiArrowDown } from 'react-icons/fi';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import Alert from '@mui/material/Alert';
 
 function Header  () {
   const { currency, setCurrency } = CryptoState()
+  const [ global, setGlobal ] = useState()
+  const [open, setOpen] = React.useState(false);
+
+  const fetchGlobal = async () => {
+    const { data } = await axios.get(Global(), {
+      headers: {
+        'accept': 'application/json'
+      }
+    });
+    setGlobal(data);
+    };
+    useEffect(() => {
+      fetchGlobal();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    // snackbar config
+    const handleClick = () => {
+      setOpen(true);
+    };
   
-    const properties = {
-      duration: 4000,
-      autoplay: true,
-      arrows: false,
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setOpen(false);
     };
 
+    const action = (
+      <React.Fragment>
+        <Button color="secondary" size="small" onClick={handleClose}>
+          Close
+        </Button>
+        <IconButton
+          size="small"
+          aria-label="close"
+          color="inherit"
+          onClick={handleClose}
+        >
+        </IconButton>
+      </React.Fragment>
+    );
+
+  const properties = {
+    duration: 4000,
+    autoplay: true,
+    arrows: false,
+  };
+
+  
   return (
-    <div>
-      <div>
-        CryptoHunter
-      </div>
-      <div className="Global">
+     <Grid container spacing={3} className="navbar">
+      <Grid item>
+      <div className="title">
+            <a href="/" style={{ textDecoration: "none" }}>
+                <div className="letter">C</div>
+                <p className="letter-side">rypto</p>
+                <p className="currency">currency</p> 
+            </a>
+        </div>
+      </Grid>
+        
+    
+      <Grid item xs={8} lg={9}>
+        <div className="Global">
          <Slide easing="ease" {...properties}>
           <div className="each-slide">
             <div>
-              
+              <div>Markets</div>
+              <span><Button color="warning">{global?.data.markets}</Button></span>
             </div>
           </div>
           <div className="each-slide">
-          
-          
+            <div>
+              <div> Active Crypto</div>
+              <span><Button color="warning">{global?.data.active_cryptocurrencies}</Button></span>
+            </div>
           </div>
           <div className="each-slide">
-           <div>
-           
-           </div>
+            <div>
+              <span><Button color="warning">Last 24h</Button>
+              {global?.data.market_cap_change_percentage_24h_usd < 0 ? (
+                <span className='red'><FiArrowDown />
+                    {global?.data.market_cap_change_percentage_24h_usd.toFixed(2)}%
+                </span>
+                    ) : (
+                <span className='green'><FiArrowUpRight />
+                    {global?.data.market_cap_change_percentage_24h_usd.toFixed(2)}%
+                </span>
+                    )}
+                </span>
+            </div>
           </div>
           <div className="each-slide">
-         
+            <div>
+              <div>Bitcoin</div>
+              <span><Button color="warning">{global?.data.market_cap_percentage['btc'].toFixed(3)}%</Button></span>
+            </div>
+          </div>
+          <div className="each-slide">
+            <div>
+              <div>Ethereum</div>
+              <span><Button color="warning">{global?.data.market_cap_percentage['eth'].toFixed(3)}%</Button></span>
+            </div>
+          </div>
+          <div className="each-slide">
+            <div>
+              <div>Tether</div>
+              <span><Button color="warning">{global?.data.market_cap_percentage['usdt'].toFixed(3)}%</Button></span>
+            </div>
           </div>
           </Slide>
         </div>
-        <div id="setCurrency" >
+      </Grid>
+        <Grid item xs={1} lg={1}>
+        <div className="set-currency" >
         <Select
+            onClick={handleClick}
             variant="outlined"
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={currency}
-            style={{ width: 100, height: 50, marginRight: 10}}
+            style={{ width: 100, height: 50}}
             onChange={(e) => setCurrency(e.target.value)}
         
           >
@@ -53,11 +143,23 @@ function Header  () {
             <MenuItem value={"GBP"}>GBP</MenuItem>
             <MenuItem value={"EUR"}>EUR</MenuItem>
           </Select>
-       
-        
-       </div>
-
-    </div>
+        <Snackbar open={open}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          action={action}
+       >
+        <Alert
+          onClose={handleClose}
+          severity="success"
+          variant="filled"
+          sx={{ width: '100%' }}
+        >
+          Currency Changed!
+        </Alert>
+        </Snackbar>
+          </div>
+        </Grid> 
+    </Grid>
   )
 }
 

@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import { HistoricalChart } from "../config/api";
 import "chart.js/auto";
 import { Line } from "react-chartjs-2";
-
 import {
-  CircularProgress, Button
+  CircularProgress, Button 
 } from "@mui/material";
 import { chartDays } from "../config/data";
 import { CryptoState } from "../cryptocontext";
+import './coins.css'
+
 
 const CoinInfo = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
@@ -19,7 +20,12 @@ const CoinInfo = ({ coin }) => {
 
 
   const fetchHistoricData = async () => {
-    const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
+    const { data } = await axios.get(HistoricalChart(coin.id, days, currency),{
+      headers: {
+        'getContentType': 'application/json',
+        'charset':'utf-8', 
+      }
+    });
     setflag(true);
     setHistoricData(data.prices);
   };
@@ -33,7 +39,7 @@ const CoinInfo = ({ coin }) => {
 
   return (
 
-      <div>
+      <div className="coin-line">
         {!historicData | flag===false ? (
           <CircularProgress
             style={{ color: "gold" }}
@@ -57,17 +63,32 @@ const CoinInfo = ({ coin }) => {
                   {
                     data: historicData.map((coin) => coin[1]),
                     label: `Price ( Past ${days} Days ) in ${currency}`,
-                    borderColor: "#EEBC1D",
+                    borderColor: "#BAE28B",
+                    fill: true,
                   },
                 ],
               }}
-              options={{
-                elements: {
-                  point: {
-                    radius: 1,
+                options={{
+                  elements: {
+                    point: {
+                      radius: 3,
+                      hoverRadius: 20,
+                    },
                   },
-                },
-              }}
+                  layout: {
+                    padding: 30,
+                  },
+                  plugins: {
+                    legend: {
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: {
+                                size: 30,
+                            },
+                        },
+                    },
+                  },
+                }}
             />
             <div
               style={{

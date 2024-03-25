@@ -1,6 +1,6 @@
 import React from "react";
-import Context from "../components/context";
 import Cointable from "../components/cointable";
+import Context from "../components/context";
 
 
 const Homepage = () => {
@@ -8,7 +8,7 @@ const Homepage = () => {
   return (
     <>
     <Cointable />
-      <Context />
+    <Context />
     </>
   );
 };

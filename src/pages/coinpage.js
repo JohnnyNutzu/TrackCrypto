@@ -6,12 +6,16 @@ import CoinInfo from "../components/coininfo";
 import { SingleCoin } from "../config/api";
 import { numberWithCommas } from "../components/cointable";
 import { CryptoState } from "../cryptocontext";
+import './pages.css'
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 
 const CoinPage = () => {
   const { id } = useParams();
   const [coin, setCoin] = useState();
-
   const { currency, symbol } = CryptoState();
+  const parse = require('html-react-parser').default;
 
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id));
@@ -28,8 +32,8 @@ const CoinPage = () => {
   if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
 
   return (
-    <div >
-      <div>
+    <div className="container">
+      <div className="coin-container">
         <img
           src={coin?.image.large}
           alt={coin?.name}
@@ -94,8 +98,27 @@ const CoinPage = () => {
             </Typography>
           </span>
         </div>
+        <span>
+            <Typography variant="subtitle1">
+              <Accordion>
+                <AccordionSummary
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>Description</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography style={{fontSize: 30}}>
+                  {parse(coin?.description.en.split('50')[0])}
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            </Typography>
+          </span>
       </div>
-      <CoinInfo coin={coin} />
+      <div className="coin-market">
+        <CoinInfo coin={coin} />
+      </div>
     </div>
   );
 };
