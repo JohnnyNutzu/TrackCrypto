@@ -65,7 +65,7 @@ function Header  () {
   
   return (
      <Grid container spacing={3} className="navbar">
-      <Grid item>
+      <Grid item xs={2}>
       <div className="title">
             <a href="/" style={{ textDecoration: "none" }}>
                 <div className="letter">C</div>
@@ -76,24 +76,24 @@ function Header  () {
       </Grid>
         
     
-      <Grid item xs={8} lg={9}>
-        <div className="Global">
+      <Grid item xs={10} md={8} lg={9}>
+        <div className="global">
          <Slide easing="ease" {...properties}>
           <div className="each-slide">
-            <div>
-              <div>Markets</div>
-              <span><Button color="warning">{global?.data.markets}</Button></span>
+            <div style={{color:'gold'}}>
+              <div>Markets:</div>
+              {global?.data.markets}
+            </div>
+          </div>
+          <div className="each-slide">
+            <div style={{color:'gold'}}>
+              <div> Active Crypto:</div>
+              {global?.data.active_cryptocurrencies}
             </div>
           </div>
           <div className="each-slide">
             <div>
-              <div> Active Crypto</div>
-              <span><Button color="warning">{global?.data.active_cryptocurrencies}</Button></span>
-            </div>
-          </div>
-          <div className="each-slide">
-            <div>
-              <span><Button color="warning">Last 24h</Button>
+              <span>Last 24h:
               {global?.data.market_cap_change_percentage_24h_usd < 0 ? (
                 <span className='red'><FiArrowDown />
                     {global?.data.market_cap_change_percentage_24h_usd.toFixed(2)}%
@@ -109,25 +109,25 @@ function Header  () {
           <div className="each-slide">
             <div>
               <div>Bitcoin</div>
-              <span><Button color="warning">{global?.data.market_cap_percentage['btc'].toFixed(3)}%</Button></span>
+              <span style={{color:'goldenrod'}}>{global?.data.market_cap_percentage['btc'].toFixed(3)}%</span>
             </div>
           </div>
           <div className="each-slide">
             <div>
               <div>Ethereum</div>
-              <span><Button color="warning">{global?.data.market_cap_percentage['eth'].toFixed(3)}%</Button></span>
+              <span style={{color:'goldenrod'}}>{global?.data.market_cap_percentage['eth'].toFixed(3)}%</span>
             </div>
           </div>
           <div className="each-slide">
             <div>
               <div>Tether</div>
-              <span><Button color="warning">{global?.data.market_cap_percentage['usdt'].toFixed(3)}%</Button></span>
+              <span style={{color:'goldenrod'}}>{global?.data.market_cap_percentage['usdt'].toFixed(3)}%</span>
             </div>
           </div>
           </Slide>
         </div>
       </Grid>
-        <Grid item xs={1} lg={1}>
+        <Grid item md={1} lg={1}>
         <div className="set-currency" >
         <Select
             onClick={handleClick}

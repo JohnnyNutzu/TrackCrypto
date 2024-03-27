@@ -63,14 +63,14 @@ export function numberWithCommas(x) {
     
 
   return (
-    <div className='coins-table'>
-      <h1>
+    <div className='coins-container'>
+      <h1 className='coins-title'>
          <p>Our whispers echoed through the ether</p>
           <p>A symphony of secrets, a code-sealed theater</p>
       </h1>
-      <h1>Top 150 coins by market cap</h1>
-      <TextField label="Search" variant="outlined"  style={{ width: 600}} onChange={(e) => setSearch(e.target.value)}/>
-      <TableContainer component={Paper} elevation={3} padding={3}>
+      <h1 style={{padding: 100}}>Top 150 coins by market cap</h1>
+      <TextField label="Search" variant="outlined"  onChange={(e) => setSearch(e.target.value)}/>
+      <TableContainer className='coins-table' component={Paper} elevation={3} padding={3}>
           {loading ? (<CircularProgress />) : (
         <Table sx={{ minWidth: 350 }} aria-label="simple table">
           <TableHead>
@@ -89,11 +89,11 @@ export function numberWithCommas(x) {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 }, maxWidth:30 }}
               >
                 <TableCell className='image-container'>{row?.market_cap_rank}<img src={row?.image}  alt={row?.name} /></TableCell>
-                <TableCell style={{fontSize: 50}} align="left"> {row?.name}</TableCell>
-                <TableCell style={{fontSize: 20}} align="right">
+                <TableCell className='table-info' align="left"> {row?.name}</TableCell>
+                <TableCell className='table-info' align="right">
                 {numberWithCommas(row?.current_price.toFixed(2))}{symbol}
                 </TableCell>
-                <TableCell style={{fontSize: 20}} align="right">
+                <TableCell className='table-info'  align="right">
                 {row?.market_cap_change_percentage_24h < 0 ? (
                                 <span className='red'><FaLongArrowAltDown />
                                   {row.market_cap_change_percentage_24h.toFixed(2)}
@@ -104,7 +104,7 @@ export function numberWithCommas(x) {
                                 </span>
                               )}
                 </TableCell>
-                <TableCell style={{fontSize: 20}} align="right">
+                <TableCell className='table-info'  align="right">
                 {row?.price_change_percentage_24h < 0 ? (
                                   <span className='red'><FaLongArrowAltDown />
                                     {row.price_change_percentage_24h.toFixed(2)}%

@@ -1,39 +1,16 @@
 /*Css for the trending coins in list */
-.menu-container {
+.context-grid {
     margin-top: 100px;
     width: auto;
     height: 100%;
 }
-
 .sub-title {
     font-weight: 800;
     font-size: 3rem;
     line-height: 5rem;
 }
-.slider {
-    height:auto;
-    background-image: url('../images/phoneCrypto.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-}
-.slide-title {
-    text-decoration: underline;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 800;
-    font-size: 2rem;
-    line-height: 2rem;
-    letter-spacing: 0.1rem;
-}
-.slide-data {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 800;
-    font-size: 2rem;
-    line-height: 2rem;
-    letter-spacing: 0.1rem;
-}
-
-.tred-info li{
-	width: 800px;
+.tred-info li {
+	width: 100%;
 	height: 250px;
 	overflow: hidden;
 	display: block;
@@ -44,7 +21,7 @@
 	transition: all 300ms ease-in-out;
 }
 
-.tred-info li:last-child{
+.tred-info li:last-child {
     margin-bottom: 0px;
 }
 .tred-info li div{
@@ -54,9 +31,9 @@
     position:relative;
 }
 .tred-icon{
-    font-size: 30px;
+    font-size: 20px;
     text-shadow: 0px 0px 1px #333;
-    line-height: 90px;
+    line-height: 50px;
     position: absolute;
     left: 20px;
     text-align: center;
@@ -117,3 +94,44 @@
 .red {
     color: #ff0000;
 }
+
+@media screen and (max-width: 1440px) {
+   .tred-info li {
+    width: auto;
+    height: 300px;
+   }
+}
+
+
+@media screen and (max-width: 760px) {
+    .sub-title {
+        font-weight: 800;
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+    .tred-main{
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+    .tred-market {
+        margin-bottom: 10px;
+        margin-left: 20px;
+    }
+}
+@media screen and (max-width: 425px) {
+    .sub-title {
+        font-weight: 800;
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+    .tred-main{
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+    .tred-info li {
+        width: auto;
+        height: auto;
+    }
+   
+}
+ 

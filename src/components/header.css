@@ -1,12 +1,12 @@
 .navbar {
     display: flex;
-    height: 180px;
+    height: auto;
     width: auto;
 	font-weight: 800;
 	position: relative;  
 	line-height: 50px;
     font-size: 40px;
-    padding: 7rem;
+    padding: 4rem;
     border: 3px solid blueviolet;
 }
 .letter {
@@ -25,7 +25,7 @@
     font-size: 40px;
     border-bottom: 3px solid black;
     margin-top: -100px;
-    margin-left: 100px; 
+    margin-left: 200px; 
 }
 .currency {
     color: black;
@@ -37,11 +37,22 @@
     height: 200px;
     width: 200px;
 }
-
-
-.title:hover p {
-    animation: glitchText 0.3s linear;
+.each-slide > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    font-family: Georgia;
+    height: 100px;
 }
+  
+.each-slide span {
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+
 @keyframes glitchText {
     0% {
         opacity: 1;
@@ -99,8 +110,38 @@
 
 
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 2560px) {
     .navbar {
-        height: auto;
+        display: flex;
+        height: 200px;
+        width: auto;
+        font-weight: 300;
+        position: relative;  
+        line-height: 20px;
+        font-size: 30px;
+        padding: 2rem;
+        border: 3px solid blueviolet;
+    }
+    .letter {
+        font-size: 100px; 
+    }
+    .letter-side {
+        width: 100px;
+        margin-top: -50px;
+        margin-left: 30px; 
     }
  }
+
+ @media screen and (max-width: 1024px) {
+
+ }
+ @media screen and (max-width: 768px) {
+    .each-slide > div {
+        height: 70px;
+    }
+    .each-slide span {
+        padding: 10px;
+        font-size: 20px;
+        text-align: center;
+    }
+ } 
